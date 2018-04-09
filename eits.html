@@ -1,50 +1,51 @@
 <!doctype html>
 <html lang="en">
     
-    <head>
+<head>
     <meta charset="UTF-8">
     <title>Eits</title>
 
+    <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
     <script src="eits.js"></script>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div ng-app ng-controller="EitDetailsController as details">
-            
-            <div>
-            First Name: <input type="string" ng-model="details.first_name">
-            </div>
-            
-            <div>
-            Last Name: <input type="string" ng-model="details.last_name">
-            </div>
-
-            <div>
-            Date of Birth: <input type="date" ng-model="details.date_of_birth">
-            </div>
-
-            <div>
-                Gender:
-                <form>
-                    <label>
-                    Female <input type="radio" value="Female" ng-model="details.gender">
-                    </label><br>
-                    <label>
-                    Male <input type="radio" value="Male" ng-model="details.gender">
-                    </label>
-                </form>
-            </div>
-
-            <div>
-                <b>Eit Details: </b><br>
-                Name: {{details.name}}<br>
-                Gender: {{details.gender}}<br>
-                Date of Birth: {{details.date_of_birth | date}}<br>
-                Age: {{details.age}}
-            </div>
+    <div ng-app="eit_details_app" ng-controller="EitDetailsController as details">
+        
+        <div>
+        First Name: <input type="string" placeholder='First Name' ng-model="details.first_name">
+        </div>
+        
+        <div>
+        Last Name: <input type="string" ng-model="details.last_name">
         </div>
 
-    </body>
+        <div>
+        Date of Birth: <input type="date" ng-model="details.date_of_birth">
+        </div>
+
+        <div>
+            Gender:
+            <form>
+                <label>
+                Female <input type="radio" value="Female" ng-model="details.gender">
+                </label><br>
+                <label>
+                Male <input type="radio" value="Male" ng-model="details.gender">
+                </label>
+            </form>
+        </div>
+
+        <div>
+            <b>Eit Details: </b><br>
+            Name: {{details.full_name()}}<br>
+            Gender: {{details.gender}}<br>
+            Date of Birth: {{details.date_of_birth | date}}<br>
+            Age: {{details.calculate_age()}}
+        </div>
+    </div>
+
+</body>
 </html>
