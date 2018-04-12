@@ -20,14 +20,26 @@
     
     <div ng-app="eitApp" ng-controller="EitController as ctrl" >
     <div class="column">
+        <div>
+            <b>EIT List</b>
+            <span ng-repeat='(key,value) in ctrl.listEits()'><br>{{value.firstName}} {{value.lastName}}</span>
+        </div>
+    </div>
+    <div class="column">
+            <div>
+                <b>EIT List</b>
+                <span ng-repeat='(key,value) in ctrl.listEits()'><br>{{key}}</span>
+            </div>
+        </div>
+    <div class="column">
         <b>EIT:</b>
         <div>
         Given Names:
-        <input type="text" ng-model="ctrl.gName" placeholder="given names">
+        <input type="text" ng-model="ctrl.firstName" placeholder="first names">
         </div>
         <div>
         Last Name:
-        <input type="text" ng-model="ctrl.lName" placeholder="last name">
+        <input type="text" ng-model="ctrl.lastName" placeholder="last name">
         </div>
         <div>
         Date of Birth:
@@ -41,11 +53,6 @@
         </div>
         <div>
             <input type="button" value="Submit" ng-click="ctrl.newEit()">
-        </div>
-    </div>
-    <div class="column">
-        <div>
-            <span ng-repeat='person in ctrl.listEits()'><br>{{person}}</span>
         </div>
     </div>
   </div>

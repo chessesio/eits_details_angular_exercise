@@ -4,14 +4,15 @@ var MS_MONTH = 2629746000;
 var MS_DAY = 86400000;
 
 // Angular module, with a controller.
-angular.module('eitApp', ['app_service'])
+var app = angular.module('eitApp', ['app_service'])
   // 'Controller' is arbitrary. The name that matters is 'EitController'.
-  .controller('EitController', ['eitsAppService', function EitController(eitsAppService) {
-    this.gName = '';
-    this.lName = '';
+  app.controller('EitController', ['eitsAppService', function EitController(eitsAppService) {
+    this.firstName = '';
+    this.lastName = '';
+    this.gender = null;
     this.dob = null;
     this.getFullName = function generateName() {
-      return this.gName + ' ' + this.lName;
+      return this.firstName + ' ' + this.lastName;
     };
     
     this.getAge = function calculateAge() {
@@ -39,10 +40,21 @@ angular.module('eitApp', ['app_service'])
     };
 
     this.newEit = function newEit(){
-      return eitsAppService.addEit(this.getFullName());
+      var eitObject = {
+        firstName : this.firstName,
+        lastName : this.lastName,
+        gender : this.gender,
+        dob : this.dob
+      }
+      return eitsAppService.addEit(eitObject);
     };
 
-    
+    this.listEits = function listEits() {
+      return eitsAppService.allEits;
+    };
+  }]);
+
+  app.controller('listAllEit', ['eitsAppService', function listAllEit(eitsAppService){
     this.listEits = function listEits() {
       return eitsAppService.allEits;
     };
