@@ -1,17 +1,27 @@
 angular.module('app_service', [])
 .factory('eitsAppService', function(){
-    this.allEits = {
+    this.allEits = {};
+    this.currentEit = {
         
     };
-    this.idCounter = 1;
 
     this.addEit = function addEit(eit){
         this.allEits[Object.keys(this.allEits).length]= eit;
-        // this.idCounter += 1;
+    };
+
+    this.setCurrentEit = function setCurrentEit(eitId){
+        this.currentEit = eitId;
+    };
+
+    this.getCurrentEit = function getCurrentEit(){
+        return this.currentEit;
     };
 
     return {
         allEits:this.allEits,
-        addEit:this.addEit
+        addEit:this.addEit,
+        setCurrentEit:this.setCurrentEit,
+        getCurrentEit:this.currentEit,
+        currentEit:this.currentEit,
     };
-});
+}); 

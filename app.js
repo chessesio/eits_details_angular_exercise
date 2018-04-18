@@ -58,4 +58,13 @@ var app = angular.module('eitApp', ['app_service'])
     this.listEits = function listEits() {
       return eitsAppService.allEits;
     };
+    // this.setCurrentEit = function setCurrentEit(eitId){
+    //   eitsAppService.setCurrentEit(eitId)
+    // };
+  }]);
+
+  app.controller('eitDetails', ['eitsAppService', function eitDetails(eitsAppService){
+    this.getEitDetails = function getEitDetails(){
+      return eitsAppService.currentEit;
+    };
   }]);

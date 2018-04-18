@@ -18,20 +18,20 @@
 
 <body>
     
-    <div ng-app="eitApp" ng-controller="EitController as ctrl" >
-    <div class="column">
+    <div ng-app="eitApp">
+    <div class="column" ng-controller="listAllEit as allEitsCtrl">
         <div>
             <b>EIT List</b>
-            <span ng-repeat='(key,value) in ctrl.listEits()'><br>{{value.firstName}} {{value.lastName}}</span>
+            <span ng-repeat='(key,value) in allEitsCtrl.listEits()'><br>{{value.firstName}} {{value.lastName}}</span>
         </div>
     </div>
-    <div class="column">
-            <div>
-                <b>EIT List</b>
-                <span ng-repeat='(key,value) in ctrl.listEits()'><br>{{key}}</span>
-            </div>
+    <div class="column" ng-controller="eitDetails as eitDetailsCtrl" >
+        <div>
+            <b>EIT Details  </b>
+            <span ng-repeat='(key,value) in eitDetailsCtrl.getEitDetails()'><br>{{key}}</span>
         </div>
-    <div class="column">
+    </div>
+    <div class="column" ng-controller="EitController as ctrl">
         <b>EIT:</b>
         <div>
         Given Names:
@@ -47,9 +47,11 @@
         </div>
         <div>
         Gender:
-        <label><input type="radio" value="Male" ng-model="ctrl.gender">male</label>
-        <label><input type="radio" value="Female" ng-model="ctrl.gender">female</label>
-        <label><input type="radio" value="Other" ng-model="ctrl.gender">other</label>
+        <form>
+            <label><input type="radio" value="Male" ng-model="ctrl.gender">male</label>
+            <label><input type="radio" value="Female" ng-model="ctrl.gender">female</label>
+            <label><input type="radio" value="Other" ng-model="ctrl.gender">other</label>
+        </form>
         </div>
         <div>
             <input type="button" value="Submit" ng-click="ctrl.newEit()">
